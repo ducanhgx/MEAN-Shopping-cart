@@ -1,0 +1,81 @@
+<button mat-raised-button class="mt-2" [mat-dialog-close]="false">
+  <mat-icon>keyboard_backspace</mat-icon>
+</button>
+<mat-tab-group>
+  <mat-tab label="Thông tin khách hàng">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2" class="text-center">
+            <h1>Thông Tin Khách hàng</h1>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Họ và tên</th>
+          <th>{{data.customer.name}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Phone</th>
+          <th>{{data.customer.phone}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Email</th>
+          <th>{{data.customer.email}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Địa chỉ</th>
+          <th>{{data.customer.address}}</th>
+        </tr>
+        <tr>
+          <th scope="row">Ngày đăng ký</th>
+          <th>{{data.customer.createdAt | date:'dd-MM-yyyy hh:mm:ss a'}}</th>
+        </tr>
+      </tbody>
+    </table>
+  </mat-tab>
+  <mat-tab label="Lịch sử giao dịch">
+    <h1>Lịch sử giao dịch</h1>
+    <div *ngIf="data.customer.transactionhistory.length > 0" class="tabscroll">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Tên </th>
+            <th scope="col">Hình</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Giá</th>
+          </tr>
+        </thead>
+      </table>
+      <table class="table" *ngFor="let transactionhistory of data.customer.transactionhistory">
+        <tbody>
+          <tr>
+            <th colspan="3" scope="row">
+              <h5>Thời gian : </h5>
+            </th>
+            <th scope="row"> 
+              <h5>{{transactionhistory.createAt  | date:'dd-MM-yyyy hh:mm:ss a'}}</h5>
+            </th>
+          </tr>
+          <tr *ngFor="let order of transactionhistory.order">
+            <th scope="row">{{order.item.tensp}}</th>
+            <th scope="row"><img width="100px" height="100px" [src]="order.item.hinhanhsp[0].path" alt=""></th>
+            <th scope="row">{{order.qty }}</th>
+            <th scope="row">{{order.price | currency:"VND":"symbol"}}</th>
+          </tr>
+          <tr>
+            <th colspan="3" scope="row">
+              <h4>Tổng cộng : </h4>
+            </th>
+            <th scope="row">
+              <h4>{{transactionhistory.totalprice | currency:"VND":"symbol"}}</h4>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <h1>Tổng : {{data.totalPriceTransactionHistory  | currency:"VND":"symbol"}}</h1>
+    </div>
+    <div *ngIf="!data.customer.transactionhistory.length > 0">chưa có lịch sử giao dịch</div>
+  </mat-tab>
+</mat-tab-group>

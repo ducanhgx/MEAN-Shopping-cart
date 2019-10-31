@@ -1,0 +1,12 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+input[type=text].invalid-textbox,input[type=password].invalid-textbox{
+  border-bottom: 2px solid #ed5558;
+  }

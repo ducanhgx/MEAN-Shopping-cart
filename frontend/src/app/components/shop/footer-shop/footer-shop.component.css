@@ -1,0 +1,33 @@
+.author {
+  background: #343a40;
+  color: #ffffff;
+  text-align: center;
+}
+.footer {
+  width: auto;
+  height: 200px;
+  color: #ffffff;
+  background: #343a40;
+}
+.box-information {
+  margin-top: 10px;
+}
+.box-information img {
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.box-information .content p {
+  padding: 5px 10px;
+}
+.box-menu {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.box-menu ul {
+  list-style-type: none;
+  padding: 10px 0;
+}
+.box-menu ul li{
+  padding: 10px 0;
+}

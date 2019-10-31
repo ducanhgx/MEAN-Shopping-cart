@@ -1,0 +1,30 @@
+.carousel-link .thumb img {
+  width: 100%;
+  margin: 2px;
+}
+
+.thumb {
+  display: inline;
+}
+.thumb img {
+  width: 100px;
+  height: 100px;
+}
+.carousel-link .thumb:first-of-type img {
+  margin-left: 0;
+}
+
+.carousel-link .thumb:last-of-type img {
+  margin-right: 0;
+}
+
+.carousel-item img {
+  width: 300px;
+  height: 300px;
+}
+h4{
+  padding: 20px 0;       
+}
+.motatomtatsp{
+  padding: 20px 0;
+}

@@ -1,0 +1,14 @@
+<button mat-raised-button class="mt-2" [mat-dialog-close]="false">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.category.tendm" placeholder="Nhập tên danh mục">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.category.motadm" placeholder="Nhập mô tả danh mục">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button [disabled]="! (data.category.tendm.trim() !== '' &&  data.category.motadm.trim() !== '')" mat-raised-button [mat-dialog-close]="data.category"><mat-icon>save</mat-icon></button>
+</mat-dialog-actions>

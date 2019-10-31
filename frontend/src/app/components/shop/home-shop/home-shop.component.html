@@ -1,0 +1,105 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100"
+        src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16b2197a1a3%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16b2197a1a3%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.921875%22%20y%3D%22217.7%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+        alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100"
+        src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16b2197a1a4%20text%20%7B%20fill%3A%23444%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16b2197a1a4%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23666%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22247.3203125%22%20y%3D%22217.7%22%3ESecond%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+        alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100"
+        src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16b2197a1a4%20text%20%7B%20fill%3A%23444%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16b2197a1a4%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23666%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22247.3203125%22%20y%3D%22217.7%22%3ESecond%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+        alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<div class="row">
+  <div class="col-9">
+    <mat-form-field>
+      <input (keyup)="filterKeyup($event.target.value)" matInput placeholder="Tìm  Kiếm sản phẩm">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+  <div class="col-3">
+    <mat-form-field>
+      <mat-label>Sắp Xếp</mat-label>
+      <mat-select (selectionChange)="filterChanged($event)"  [(ngModel)]="sort">
+        <mat-option [value]="-1">
+          Giảm dần
+        </mat-option>
+        <mat-option [value]="1">
+          Tăng dần
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <div class="boxcategory">
+      <h3 class="titlecategory">Danh Mục</h3>
+      <ul>
+        <li [class.active]="selectedIndex === -1" (click)="onProductCategory(true,-1)">Tất cả</li>
+        <li [class.active]="selectedIndex === i" *ngFor="let category of categories;let i = index"
+          (click)="onProductCategory(category,i)">{{category.tendm}}</li>
+      </ul>
+    </div>
+    <div class="boxSearch">
+      <section>
+        <h3 class="titleSearch">Tìm kiếm</h3>
+        <mat-radio-group [(ngModel)]="value">
+
+          <mat-radio-button value="Giá dưới 5 triệu" (change)="OnChangeFilterPrice(0,5)">Giá dưới 5 triệu
+          </mat-radio-button>
+
+          <mat-radio-button value="Giá từ 5 triệu đến 10 triệu" (change)="OnChangeFilterPrice(5,10)">Giá từ 5 triệu đến
+            10
+            triệu</mat-radio-button>
+
+          <mat-radio-button value="Giá trên 10 triệu" (change)="OnChangeFilterPrice(0,10)">Giá trên 10 triệu
+          </mat-radio-button>
+
+        </mat-radio-group>
+      </section>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="row" *ngIf="products.length > 0">
+      <div class="col-4 mt-2" *ngFor="let product of products">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title style="font-size: 14px">{{product.tensp}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image width="200px" height="300px" [src]="product.hinhanhsp[0].path" alt="{{product.tensp}}">
+          <mat-card-content>
+            <p class="card-text">{{product.giaspdagiam |currency:"VND":"symbol"}}</p>
+            <p class="card-text"><del>{{product.giaspchuagiam |currency:"VND":"symbol"}}</del></p>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="row">
+              <div class="col-7"><button mat-raised-button (click)="addtocart(product)" class="btn btn-primary"> <mat-icon>shopping_cart</mat-icon>Thêm vào giỏ</button></div>
+              <div class="col-5"><button mat-raised-button (click)="detailproduct(product)" class="btn btn-primary">Chi
+                  tiết</button></div>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>

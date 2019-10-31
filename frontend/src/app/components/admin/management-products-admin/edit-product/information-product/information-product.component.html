@@ -1,0 +1,52 @@
+<div *ngIf="!showloading" class="mt-5 ">
+  <form #editForm="ngForm" (ngSubmit)="editForm.valid && onSubmit(product._id,editForm)">
+    <div class="form-group example-container">
+      <mat-form-field>
+        <input matInput type="text" name="tensp" #tensp="ngModel" [(ngModel)]="product.tensp" required
+          placeholder="Tên sản phẩm">
+      </mat-form-field>
+    </div>
+    <div class="form-group example-container">
+      <mat-form-field>
+        <input matInput type="number" name="giaspchuagiam" #giaspchuagiam="ngModel" [(ngModel)]="product.giaspchuagiam"
+          required placeholder="Giá sản phẩm chưa giảm">
+      </mat-form-field>
+    </div>
+    <div class="form-group example-container">
+      <mat-form-field>
+        <input matInput type="number" name="giaspdagiam" #giaspdagiam="ngModel" [(ngModel)]="product.giaspdagiam"
+          required placeholder="Giá sản phẩm chưa giảm">
+      </mat-form-field>
+    </div>
+    <div class="form-group example-container">
+      <mat-form-field>
+        <mat-label>Danh mục</mat-label>
+        <mat-select [(value)]="product.tendm" name="tendm" [(ngModel)]="product.tendm" required #tendm="ngModel">
+          <mat-option *ngFor="let category of categorys" [value]="category.tendm">
+            {{ category.tendm }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+        <div class="form-group">
+        <label>Mô tả tóm tắt</label>
+        <ck-editor name="motatomtatsp" #motatomtatsp="ngModel" [(ngModel)]="product.motatomtatsp" language="vi">
+        </ck-editor>
+      </div>
+      <div class="form-group">
+        <label>Mô tả chi tiết</label>
+        <ck-editor name="motachitietsp" #motachitietsp="ngModel" [(ngModel)]="product.motachitietsp" language="vi">
+        </ck-editor>
+      </div>
+    <div class="text-center">
+      <button type="submit" [disabled]="!editForm.valid" mat-raised-button color="primary">
+        <mat-icon>save</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>
+<div *ngIf="showloading">
+    <div style="margin: 250px 400px">
+        <mat-spinner></mat-spinner>
+    </div>
+</div>

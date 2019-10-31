@@ -1,0 +1,16 @@
+<h4>Trạng thái đơn hàng</h4>
+<div class="row">
+<div class="col">
+  <mat-form-field>
+    <mat-label>Trạng thái</mat-label>
+    <mat-select [(value)]="data.customer.status"   required>
+      <mat-option [value]="false">Chưa thanh toán</mat-option>
+      <mat-option [value]="true">Đã thanh toán</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+</div>
+<div class="text-center float-right">
+    <button mat-raised-button mat-dialog-close="false"  class="btn btn-danger mr-3">Đóng</button>
+    <button mat-raised-button [mat-dialog-close] = "data.customer.status" color="primary" class="btn btn-primary mr-5">Cập nhật</button>
+</div>

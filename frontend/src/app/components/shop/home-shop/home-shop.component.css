@@ -1,0 +1,51 @@
+.active {
+  background: #343a40;
+  color: #ffffff;
+  border-radius: 4px;
+}
+.titlecategory {
+  margin-top: 10px;
+  background: #343a40;
+  color: #ffffff;
+  width: auto;
+  padding: 10px;
+  text-align: center;
+}
+.boxcategory {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+.boxcategory ul {
+  list-style-type: none;
+  padding: 10px 20px;
+}
+.boxcategory ul li {
+  padding: 10px 20px;
+}
+.mat-form-field{
+  margin: 10px 6px;
+  width: 100%;
+}
+.titleSearch {
+  margin-top: 10px;
+  background: #343a40;
+  color: #ffffff;
+  width: auto;
+  padding: 10px;
+  text-align: center;
+}
+.boxSearch {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+    0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+.boxSearch mat-radio-group mat-radio-button {
+  padding: 10px 20px;
+}
+mat-card-header{
+  width: auto;
+  height: 100px;
+  /* max-width: 500px;
+  max-height: 700px; */
+}

@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content>{{data.messenger}} </mat-dialog-content>  
+<div class="row">
+  <div class="col"> <button color="warn" class=" btn-lg btn-block" mat-raised-button [mat-dialog-close]="true">Yes</button></div>
+  <div class="col"> <button mat-raised-button class=" btn-lg btn-block" [mat-dialog-close]="false">No</button></div>
+</div>

@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+th.mat-header-cell {
+  text-align: left;
+  max-width: 300px;
+}
+
+.example-margin {
+  margin: 10px;
+}
+mat-form-field {
+  width: 60%;
+  margin-left: 1%;
+}

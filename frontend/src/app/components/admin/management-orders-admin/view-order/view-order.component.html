@@ -1,0 +1,76 @@
+<button mat-raised-button class="mt-2" [mat-dialog-close]="false">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+<h2 mat-dialog-title>Thông tin chi tiết</h2>
+<mat-dialog-content>
+  <div class="row">
+    <div class="col-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="2" class="text-center">
+              <h1>Thông Tin Khách hàng</h1>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Họ và tên</th>
+            <td>{{data.Order.name}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Phone</th>
+            <td>{{data.Order.phone}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Email</th>
+            <td>{{data.Order.email}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Address</th>
+            <td>{{data.Order.address}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Note</th>
+            <td>{{data.Order.note}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Trạng Thái</th>
+            <td><button mat-raised-button 
+                [ngClass]=" data.Order.status ? 'bg-primary ' : 'bg-daner'">{{data.Order.status ? 'Đã Thanh Toán' : 'Chưa Thanh Toán' }}</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6">
+      <h1>Đơn Hàng</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Tên </th>
+            <th scope="col">Hình</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Giá</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of data.Order.order">
+            <th scope="row">{{order.item.tensp}}</th>
+            <th scope="row"><img width="100px" height="100px" [src]="order.item.hinhanhsp[0].path" alt=""></th>
+            <th scope="row">{{order.qty }}</th>
+            <th scope="row">{{order.price | currency:"VND":"symbol"}}</th>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <h3>Tổng cộng</h3>
+            </td>
+            <td>
+              <h3>{{data.Order.totalprice | currency:"VND":"symbol"}}</h3>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</mat-dialog-content>

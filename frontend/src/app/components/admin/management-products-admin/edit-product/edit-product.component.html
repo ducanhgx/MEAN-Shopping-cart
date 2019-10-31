@@ -1,0 +1,11 @@
+<button mat-raised-button class="mt-2" routerLink="/quantri/quanlysanpham">
+    <mat-icon>keyboard_backspace</mat-icon>
+</button>
+<mat-tab-group>
+    <mat-tab label="Thông tin sản phẩm">
+        <information-product [id]="id"></information-product>
+    </mat-tab>
+    <mat-tab label=" Tất cả hình ảnh">
+        <image-product [id]="id"></image-product>
+    </mat-tab>
+</mat-tab-group>

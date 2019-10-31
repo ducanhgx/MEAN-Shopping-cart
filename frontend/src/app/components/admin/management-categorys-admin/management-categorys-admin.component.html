@@ -1,0 +1,62 @@
+
+
+<div  *ngIf="adminService.isLoggedIn()">
+    <button mat-raised-button (click) = "onOpenAdd()">Thêm Danh Mục</button>
+    <mat-form-field>
+        <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Tìm  Kiếm Danh Mục">
+        <mat-icon matSuffix>search</mat-icon>
+     </mat-form-field>
+      <table matSortActive="tendm" matSortDirection="asc" matSortDisableClear  mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef> _id </th>
+          <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="tendm">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> tendm </th>
+          <td mat-cell *matCellDef="let element"> {{element.tendm}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="motadm">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> motadm </th>
+          <td mat-cell *matCellDef="let element"> {{element.motadm}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="trangthaidm">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> trangthaidm </th>
+          <td mat-cell *matCellDef="let element">
+              <mat-slide-toggle
+              (change)="onChange(element._id,$event)"
+              class="example-margin"
+              [color]="accent"
+              [checked]="element.trangthaidm"
+        >
+          </mat-slide-toggle> 
+            {{element.trangthaidm}} </td>
+        </ng-container>
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> createdAt </th>
+          <td mat-cell *matCellDef="let element"> {{element.createdAt| date:'yyyy-MM-dd'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="updatedAt">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> updatedAt </th>
+          <td mat-cell *matCellDef="let element"> {{element.updatedAt| date:'yyyy-MM-dd'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action" >
+          <th mat-header-cell *matHeaderCellDef> action </th>
+          <td mat-cell *matCellDef="let element">
+             <button mat-icon-button (click) = "onOpenEdit(element)">
+              <mat-icon>launch</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click) = "deleteData(element)">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[1,5, 10, 25, 100]" showFirstLastButtons>
+      </mat-paginator>
+</div>

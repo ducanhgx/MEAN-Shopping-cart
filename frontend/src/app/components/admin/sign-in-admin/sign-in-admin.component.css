@@ -1,0 +1,38 @@
+.boxlogin {
+  background-image: url("../../../../assets/img/login-background.png");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 25.79%;
+  position: relative;
+}
+mat-card {
+  width: 500px;
+  margin: 0 auto;
+  position: absolute;
+  top: 200px;
+  left: 30%;
+  z-index: 99999999;
+}
+mat-form-field {
+  width: 100%;
+  padding: 20px;
+}
+h1 {
+  color: #ffffff;
+  z-index: 99999999;
+  position: absolute;
+  top: 15%;
+  left: 40%;
+}
+
+/* .example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+} */

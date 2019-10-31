@@ -1,0 +1,78 @@
+<div class="mt-5 row">
+  <div class="col-6">
+    <h1>Thông tin giao hàng</h1>
+    <form #orderForm='ngForm' (ngSubmit)="orderForm.valid && onSubmit(orderForm)">
+
+      <div class="form-group example-container">
+        <mat-form-field>
+          <input matInput placeholder="Họ và tên" type="text" required #name='ngModel' name="name"
+            [(ngModel)]="orderCustomer.name">
+        </mat-form-field>
+      </div>
+
+      <div class="form-group example-container">
+        <mat-form-field>
+          <input matInput placeholder="Số điện thoại" [pattern]="phoneRegex" type="text" required #phone='ngModel'
+            name="phone" [ngClass]="{'invalid-textbox' :orderForm.submitted && !phone.valid }"
+            [(ngModel)]="orderCustomer.phone">
+        </mat-form-field>
+      </div>
+      <div class="form-group example-container">
+        <mat-form-field>
+          <input matInput placeholder="Email" [pattern]="emailRegex" type="email" required #email='ngModel' name="email"
+            [(ngModel)]="orderCustomer.email" [ngClass]="{'invalid-textbox' :orderForm.submitted && !email.valid }">
+        </mat-form-field>
+      </div>
+      <div class="form-group example-container">
+        <mat-form-field>
+          <input matInput placeholder="Địa chỉ" type="text" required #address='ngModel' name="address"
+            [(ngModel)]="orderCustomer.address">
+        </mat-form-field>
+      </div>
+      <div class="form-group example-container">
+        <mat-form-field>
+          <textarea matInput style="resize: none" rows="4" cols="50" placeholder="Ghi chú" required #note='ngModel'
+            name="note" [(ngModel)]="orderCustomer.note"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="text-center">
+        <button type="submit" [disabled]="!orderForm.valid" mat-raised-button color="primary">
+          <mat-icon>check_circle</mat-icon>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="col-6">
+    <h1>Đơn Hàng</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Tên </th>
+          <th scope="col">Số lương</th>
+          <th scope="col">Giá</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cart of carts">
+          <th scope="row"><a routerLink="/sanpham/{{cart.item._id}}">{{cart.item.tensp}}</a></th>
+          <th scope="row">{{cart.qty }}</th>
+          <th scope="row">{{cart.price | currency:"VND":"symbol"}}</th>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <h1>Tổng cộng</h1>
+          </td>
+          <td>
+            <h1>{{totalPrice | currency:"VND":"symbol"}}</h1>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <button *ngIf="khService.khachhang != null" mat-raised-button class="btn btn-warning"
+        routerLink="/giohangkhachhang">Quay lại<mat-icon>local_grocery_store</mat-icon></button>
+      <button *ngIf="khService.khachhang == null" mat-raised-button class="btn btn-warning" routerLink="/giohang">Quay
+        lại<mat-icon>local_grocery_store</mat-icon></button>
+    </div>
+  </div>
+</div>

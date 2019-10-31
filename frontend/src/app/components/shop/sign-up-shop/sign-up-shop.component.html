@@ -1,0 +1,49 @@
+<div class="mt-5">
+  <h1 class="text-center">Đăng Ký</h1>
+    <mat-card>
+  <form #signUpForm='ngForm' (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+    <div class="form-row mt-5">
+      <div class="example-container col-md-6">
+        <mat-form-field>
+          <input matInput type="email" name="email" #email="ngModel" [(ngModel)]="khService.selectedKhachhang.email"
+            placeholder="Email" [pattern]="emailRegex" required placeholder="Email"  [ngClass] ="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="example-container col-md-6">
+        <mat-form-field>
+          <input matInput type="password" required name="password" #password="ngModel"
+            [(ngModel)]="khService.selectedKhachhang.password" placeholder="Password">
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="example-container">
+      <mat-form-field>
+        <input matInput type="text" required #address='ngModel' name="address"
+          [(ngModel)]="khService.selectedKhachhang.address" placeholder="Address">
+        <mat-icon matSuffix>place</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <div class="example-container col-md-6">
+        <mat-form-field>
+          <input matInput input type="text" required #name='ngModel' name="name"
+            [(ngModel)]="khService.selectedKhachhang.name" placeholder="Name">
+          <mat-icon matSuffix>nature_people</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="example-container col-md-6">
+        <mat-form-field>
+          <input matInput type="text" required #phone='ngModel' name="phone"
+            [(ngModel)]="khService.selectedKhachhang.phone" placeholder="Phone">
+          <mat-icon matSuffix>call</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+   <div class="text-center">
+      <button type="submit"  [disabled] ="!signUpForm.valid" mat-raised-button class="btn btn-primary">Đăng Ký</button>
+   </div>
+  </form>  
+</mat-card>
+</div>

@@ -1,0 +1,89 @@
+<div *ngIf="adminService.isLoggedIn()">
+  <button mat-raised-button routerLink="/quantri/quanlysanpham/them">Thêm Sản Phẩm</button>
+  <mat-form-field>
+    <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Tìm Kiếm Sản Phẩm">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <table matSortActive="tendm" matSortDirection="asc" matSortDisableClear mat-table [dataSource]="dataSource"
+    class="mat-elevation-z8" matSort>
+
+    <ng-container matColumnDef="_id">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> _id </th>
+      <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="tensp">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> tensp </th>
+      <td mat-cell *matCellDef="let element"> {{element.tensp}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tendm">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> tendm </th>
+      <td mat-cell *matCellDef="let element"> {{element.tendm}} </td>
+    </ng-container>
+    <ng-container matColumnDef="giaspchuagiam">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> giaspchuagiam </th>
+      <td mat-cell *matCellDef="let element"> {{element.giaspchuagiam}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="giaspdagiam">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> giaspdagiam </th>
+      <td mat-cell *matCellDef="let element"> {{element.giaspdagiam}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="motatomtat">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> motatomtat </th>
+      <td mat-cell *matCellDef="let element"> {{element.motatomtat}} </td>
+    </ng-container>
+    <ng-container matColumnDef="motachitiet">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> motachitiet </th>
+      <td mat-cell *matCellDef="let element"> {{element.motachitiet}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="soluongton">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> soluongton </th>
+      <td mat-cell *matCellDef="let element"> {{element.soluongton}} </td>
+    </ng-container>
+    <ng-container matColumnDef="hinhanhsp">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> hinhanhsp </th>
+      <td mat-cell *matCellDef="let element"><img width="50px" height="50px" [src]="element.hinhanhsp[0].path" alt="">
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="trangthaisp">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> trangthaisp </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-slide-toggle (change)="onChange(element._id,$event)" class="example-margin" [color]="accent"
+          [checked]="element.trangthaisp">
+        </mat-slide-toggle>
+
+        {{element.trangthaisp}}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> createdAt </th>
+      <td mat-cell *matCellDef="let element"> {{element.createdAt| date:'yyyy-MM-dd'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> updatedAt </th>
+      <td mat-cell *matCellDef="let element"> {{element.updatedAt| date:'yyyy-MM-dd'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> action </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button routerLink="/quantri/quanlysanpham/chinhsua/{{element._id}}">
+          <mat-icon>launch</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteData(element)">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[1,5, 10, 25, 100]" showFirstLastButtons>
+  </mat-paginator>
+</div>

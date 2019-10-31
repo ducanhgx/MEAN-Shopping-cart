@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">ducanhgx</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item " routerLink="/trangchu" routerLinkActive="active">
+          <a class="nav-link">Trang chủ<span class="sr-only">(current)</span></a>
+        </li>
+        <!-- <li class="nav-item " routerLink="/sanpham" routerLinkActive="active">
+          <a class="nav-link">Sản phẩm</a>
+        </li> -->
+        <li class="nav-item " routerLink="/gioithieu" routerLinkActive="active">
+          <a class="nav-link">Giới Thiệu</a>
+        </li>
+        <li class="nav-item " routerLink="/lienhe" routerLinkActive="active">
+          <a class="nav-link">Liên Hệ</a>
+        </li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf='!khService.khachhang'>
+        <ul class="navbar-nav ml-auto">
+          <li  class="nav-item " routerLink="/dangnhap" routerLinkActive="active">
+            <a class="nav-link">Đăng nhập</a>
+          </li>
+          <li  class="nav-item" routerLink="/dangky" routerLinkActive="active">
+            <a class="nav-link">Đăng ký</a>
+          </li>
+          <li  class="nav-item " routerLink="/giohang" routerLinkActive="active">
+            <a class="nav-link"><mat-icon>shopping_cart</mat-icon><span class="badge badge-light">{{cart}}</span></a>
+          </li>
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf='khService.khachhang'>
+        <ul class="navbar-nav ml-auto">
+          <li  class="nav-item "  routerLink="/giohangkhachhang" routerLinkActive="active">
+            <a class="nav-link"><mat-icon>shopping_cart</mat-icon><span class="badge badge-light">{{cart}}</span></a>
+          </li>
+          <li  class="nav-item ">
+            <div class="dropdown" *ngIf='khService.khachhang'>
+              <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="false" aria-expanded="false">
+                {{khService.khachhang.name}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" routerLink="/thongtinkhachhang">Thông tin</a>
+                <a class="dropdown-item" (click)="onLogout()">Đăng Xuất</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+    </div>
+  </nav>

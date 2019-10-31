@@ -1,0 +1,45 @@
+<div class="row mt-5">
+  <div class="col-12">
+    Tìm Kiếm Sản Phẩm :
+    <mat-form-field style="width: 100%;">
+      <input matInput type="text" (keyup)="onKey($event)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col-12">
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li *ngFor="let category of categorys" class="page-item" routerLink="/sanpham/{{category.tendm}}"
+          routerLinkActive="active">
+          <a *ngIf="category.trangthaidm" class="page-link"> {{category.tendm}} <span
+              class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="row" *ngIf="products.length > 0">
+  <div class="col-3 mt-2" *ngFor="let product of products">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title style="font-size: 14px">{{product.tensp}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="product.hinhanhsp[0].path" alt="{{product.tensp}}">
+      <mat-card-content>
+        <p class="card-text">{{product.giaspdagiam |currency:"VND":"symbol"}}</p>
+        <p class="card-text"><del>{{product.giaspchuagiam |currency:"VND":"symbol"}}</del></p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="row">
+          <div class="col-6"><button mat-raised-button (click)="addtocart(product)" class="btn btn-primary">Thêm vào
+              giỏ</button></div>
+          <div class="col-6"><button mat-raised-button (click)="detailproduct(product)" class="btn btn-primary">Chi
+              tiết</button></div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div *ngIf="!products.length > 0" class="col-12">Chưa Có Sản Phẩm Nào !!!!</div>
+</div>

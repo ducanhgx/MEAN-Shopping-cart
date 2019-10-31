@@ -1,0 +1,49 @@
+
+<div *ngIf="carts" >
+  <div class="shopping-cart" >
+
+      <div class="row" >
+          <div class="col-6"><h1 class="title">Giỏ hàng</h1></div>
+          <div class="col-6" *ngIf = "carts.length > 0"> <button class="btn btn-outline-danger" title="xóa giỏ hàng" (click) = "deleteCart()"><mat-icon>delete_forever</mat-icon>Xóa giỏ hàng</button></div>
+      </div>
+    
+      <div class="item" *ngFor="let cart of carts ; let i = index ">
+
+          <div class="buttons" title="xóa sản phẩm"  (click)="removeItemInCart(cart.item._id)">
+              <mat-icon>delete</mat-icon>
+          </div>
+        <div class="image">
+          <img width="100px" height="100px" [src]="cart.item.hinhanhsp[0].path" alt="" />
+        </div>
+    
+        <div class="description">
+          <span><a routerLink="/sanpham/{{cart.item._id}}">{{cart.item.tensp}}</a></span>
+          <span>{{cart.item.giaspdagiam |currency:"VND":"symbol"}}</span>
+        </div>
+    
+        <div class="quantity">
+          <button class="plus-btnstyle" type="button" name="button" (click)="plusItem(i)">
+            <img src="https://designmodo.com/demo/shopping-cart/plus.svg" alt="" />
+          </button>
+          <input type="text" name="name" value="{{cart.qty}}">
+          <button class="minus-btnstyle" type="button" name="button" (click)="minusItem(i)">
+            <img src="https://designmodo.com/demo/shopping-cart/minus.svg" alt="" />
+          </button>
+        </div>
+    
+        <div class="total-price">{{cart.qty * cart.price |currency:"VND":"symbol"}}</div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-10">
+          <h1>Tổng cộng : {{ totalPrice  |currency:"VND":"symbol"}}</h1>
+        </div>
+        <div *ngIf="carts.length > 0" class="col-2" routerLink="/checkout"><button class="btn btn-success"><mat-icon>check</mat-icon>Đặt Hàng</button></div>
+      </div>
+      <div class="row">
+        <div class="col-10">
+        </div>
+        <div class="col-2" routerLink="/trangchu"><button class="btn btn-warning"><mat-icon>local_grocery_store</mat-icon>Tiếp tục mua</button></div>
+      </div>
+</div>
+

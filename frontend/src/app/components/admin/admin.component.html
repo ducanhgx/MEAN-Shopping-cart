@@ -1,0 +1,35 @@
+<div *ngIf="adminService.isLoggedIn()">
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" [(opened)]="opened">
+        <div class="row mt-3">
+            <div class="col"><h1>Chào {{profileAdmin.fullName}}</h1></div>
+         </div>
+      <mat-nav-list>
+        <a routerLink="/quantri/quanlydanhmuc" routerLinkActive="active" class="btn btn-dark" mat-list-item>Quản
+          Lý
+          Danh Mục</a>
+        <a routerLink="/quantri/quanlysanpham" routerLinkActive="active" class="btn btn-dark" mat-list-item>Quản
+          Lý
+          Sản Phẩm</a>
+        <a routerLink="/quantri/quanlykhachhang" routerLinkActive="active" class="btn btn-dark" mat-list-item>Quản
+          Lý Khách Hàng</a>
+        <a routerLink="/quantri/quanlydonhang" routerLinkActive="active" class="btn btn-dark" mat-list-item>Quản
+          Lý Đơn Hàng <span *ngIf="numberOrder > 0" class="badge badge-light"> {{ numberOrder}}</span></a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="row"> <button mat-raised-button (click)="opened = !opened">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button mat-raised-button class="ml-5" (click)="onLogOut()"> Đăng Xuất
+        </button>
+      </div>
+      <div class=" opened ? 'bg-table' : ''">         
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+<div *ngIf="!adminService.isLoggedIn()" class="boxlogin">
+  <sign-in-admin></sign-in-admin>
+</div>
